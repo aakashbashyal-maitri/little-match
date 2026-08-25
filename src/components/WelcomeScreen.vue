@@ -156,22 +156,27 @@ const sparkles = [
   font-weight: 900;
   margin: 0;
   letter-spacing: -0.01em;
-  background: linear-gradient(135deg, #FF6B35 0%, #9333EA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: none;
-  filter: drop-shadow(0 3px 0 rgba(255,255,255,0.85)) drop-shadow(0 6px 16px rgba(147,51,234,0.3));
+  color: white;
+  -webkit-text-stroke: 3.5px #9333EA;
+  paint-order: stroke fill;
+  text-shadow:
+    0 4px 0 rgba(147,51,234,0.25),
+    0 8px 24px rgba(0,0,0,0.18);
   animation: pop-in 0.7s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
 .tagline {
   font-family: 'Nunito', sans-serif;
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: #7c3aed;
-  margin: 6px 0 0;
-  text-shadow: 0 2px 0 rgba(255,255,255,0.6);
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #4c1d95;
+  margin: 8px 0 0;
+  text-shadow:
+    1px 1px 0 white,
+    -1px -1px 0 white,
+    1px -1px 0 white,
+    -1px 1px 0 white,
+    0 3px 8px rgba(0,0,0,0.15);
   animation: pop-in 0.7s 0.15s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
@@ -209,10 +214,11 @@ const sparkles = [
 .card-emoji { font-size: 2.2rem; line-height: 1; }
 .card-name {
   font-family: 'Nunito', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   font-weight: 900;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255,255,255,0.8);
 }
 
 /* ── Play button ─────────────────────────────────────── */
