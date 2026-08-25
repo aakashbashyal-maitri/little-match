@@ -145,19 +145,18 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 
     <StarBurst :active="burstActive" :x="burstX" :y="burstY" />
 
-    <!-- Bottom bar: centered label + progress dots -->
+    <!-- Bottom info bar -->
     <div class="bottom-bar">
-      <div class="level-pill" :style="{ color: level.accent, borderColor: level.accent }">
-        <span>{{ level.name }}</span>
+      <div class="bar-row">
+        <span class="level-label" :style="{ color: level.accent }">{{ level.emoji }} {{ level.name }}</span>
+        <span class="puzzle-count" :style="{ color: level.accent }">{{ puzzleIndex + 1 }} / {{ totalPuzzles }}</span>
       </div>
-      <div class="progress-dots">
+      <div class="progress-track">
         <div
-          v-for="i in totalPuzzles" :key="i"
-          class="dot"
-          :class="{
-            done:    i - 1 < puzzleIndex,
-            current: i - 1 === puzzleIndex,
-            todo:    i - 1 > puzzleIndex,
+          class="progress-fill"
+          :style="{
+            width: `${((puzzleIndex + 1) / totalPuzzles) * 100}%`,
+            background: level.accent,
           }"
         />
       </div>
@@ -180,31 +179,49 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 .bottom-bar {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
   max-width: 440px;
+  background: rgba(255,255,255,0.82);
+  border-radius: 16px;
+  padding: 10px 14px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
-.level-pill {
+.bar-row {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  background: white;
-  border: 3px solid;
-  border-radius: 9999px;
-  padding: 0.3rem 1rem;
-  font-family: "Nunito", sans-serif;
-  font-size: 1.15rem;
-  font-weight: 900;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
 }
 
-.progress-dots { display: flex; align-items: center; gap: 7px; }
-.dot { border-radius: 50%; transition: all 0.3s ease; }
-.dot.done    { width: 11px; height: 11px; background: #7C3AED; }
-.dot.current { width: 15px; height: 15px; background: #a78bfa; box-shadow: 0 0 0 3px rgba(167,139,250,0.35); }
-.dot.todo    { width: 11px; height: 11px; background: rgba(255,255,255,0.6); border: 2px solid rgba(0,0,0,0.15); }
+.level-label {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.puzzle-count {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  opacity: 0.85;
+}
+
+.progress-track {
+  width: 100%;
+  height: 10px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
 /* ── 3x3 grid ─────────────────────────────────────────────── */
 .play-area {
