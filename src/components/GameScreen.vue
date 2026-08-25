@@ -145,10 +145,21 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 
     <StarBurst :active="burstActive" :x="burstX" :y="burstY" />
 
-    <!-- Bottom bar: centered label only -->
+    <!-- Bottom bar: centered label + progress dots -->
     <div class="bottom-bar">
       <div class="level-pill" :style="{ color: level.accent, borderColor: level.accent }">
         <span>{{ level.name }}</span>
+      </div>
+      <div class="progress-dots">
+        <div
+          v-for="i in totalPuzzles" :key="i"
+          class="dot"
+          :class="{
+            done:    i - 1 < puzzleIndex,
+            current: i - 1 === puzzleIndex,
+            todo:    i - 1 > puzzleIndex,
+          }"
+        />
       </div>
     </div>
   </div>
