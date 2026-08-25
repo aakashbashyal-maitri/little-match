@@ -43,6 +43,7 @@ defineExpose({ el })
   border: 4px solid #1a1a1a;
   background: #d4d4d4;
   box-shadow: 0 5px 18px rgba(0,0,0,0.18), 0 2px 5px rgba(0,0,0,0.10);
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;

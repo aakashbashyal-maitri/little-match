@@ -148,7 +148,6 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
     <!-- Bottom bar: centered, name on top, progress dots below -->
     <div class="bottom-bar">
       <div class="level-pill" :style="{ color: level.accent, borderColor: level.accent }">
-        <span>{{ level.emoji }}</span>
         <span>{{ level.name }}</span>
       </div>
       <div class="progress-dots">
