@@ -5,7 +5,7 @@ import ItemShape from './ItemShape.vue'
 
 defineProps<{
   targetId:    ItemId
-  zoneBg:      string
+  zoneBg?:     string
   isHovering?: boolean
   isSolved?:   boolean
 }>()
@@ -19,16 +19,15 @@ defineExpose({ el })
     ref="el"
     class="stage-frame"
     :class="{ hovering: isHovering, solved: isSolved }"
-    :style="{}"
   >
-    <!-- Silhouette -->
+    <!-- Black silhouette shown until solved -->
     <Transition name="fade-out">
       <div v-if="!isSolved" class="item-layer animate-zone-shimmer">
         <ItemShape :item-id="targetId" mode="silhouette" :size="150" />
       </div>
     </Transition>
 
-    <!-- Colorful reveal -->
+    <!-- Colorful reveal on solve -->
     <Transition name="pop-reveal">
       <div v-if="isSolved" class="item-layer animate-pop-in">
         <ItemShape :item-id="targetId" mode="colorful" :size="150" />
@@ -39,33 +38,35 @@ defineExpose({ el })
 
 <style scoped>
 .stage-frame {
+  /* Identical card appearance to DraggableItem */
   position: relative;
-  width: min(74vw, 240px);
-  height: min(74vw, 240px);
   border-radius: 22px;
-  background: #ffffff;
-  border: 3px solid rgba(0,0,0,0.14);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.07);
+  border: 4px solid white;
+  background-color: #FF8A80;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    rgba(255,255,255,0.25) 8px,
+    rgba(255,255,255,0.25) 10px
+  );
+  box-shadow: 0 5px 18px rgba(0,0,0,0.20), 0 2px 5px rgba(0,0,0,0.10);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.22s ease, box-shadow 0.22s ease;
-  overflow: visible;
+  overflow: hidden;
   flex-shrink: 0;
 }
+
 .stage-frame.hovering {
   transform: scale(1.04);
-  border-color: #fde68a;
-  box-shadow:
-    0 0 0 4px rgba(253,230,138,0.6),
-    0 16px 56px rgba(0,0,0,0.18);
-  animation: pulse-ring 1.2s ease-out infinite;
+  border-color: #fff176;
+  box-shadow: 0 0 0 4px rgba(255,241,118,0.6), 0 14px 40px rgba(0,0,0,0.2);
 }
 .stage-frame.solved {
-  border-color: #86efac;
-  box-shadow:
-    0 0 0 4px rgba(134,239,172,0.5),
-    0 12px 48px rgba(0,0,0,0.14);
+  border-color: #a5f3a5;
+  box-shadow: 0 0 0 4px rgba(134,239,172,0.5), 0 10px 30px rgba(0,0,0,0.14);
 }
 
 .item-layer {

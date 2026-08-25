@@ -74,7 +74,7 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 <template>
   <div class="game-screen">
 
-    <!-- Header: level pill + progress dots -->
+    <!-- Header -->
     <div class="header">
       <div class="level-pill" :style="{ color: level.accent, borderColor: level.accent }">
         <span>{{ level.emoji }}</span>
@@ -93,28 +93,72 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
       </div>
     </div>
 
-    <!-- Central drop zone stage -->
-    <DropZone
-      ref="dropZoneRef"
-      :target-id="puzzle.targetId"
-      :zone-bg="level.zoneBg"
-      :is-hovering="isHovering"
-      :is-solved="isSolved"
-    />
+    <!-- 3x3 grid: stage in center, 4 cards in corners -->
+    <div class="play-area">
 
-    <!-- 2x2 choices grid -->
-    <div class="choices-grid">
       <DraggableItem
-        v-for="(itemId, i) in shuffledChoices"
-        :key="`${puzzle.targetId}-${itemId}`"
-        :item-id="itemId"
-        :card-index="i"
+        v-if="shuffledChoices[0]"
+        :key="`tl-${puzzle.targetId}-${shuffledChoices[0]}`"
+        class="pos-tl"
+        :item-id="shuffledChoices[0]"
+        :card-index="0"
         :disabled="isSolved"
-        :wobble="wobbleId === itemId"
-        :dimmed="draggingId !== null && draggingId !== itemId"
+        :wobble="wobbleId === shuffledChoices[0]"
+        :dimmed="draggingId !== null && draggingId !== shuffledChoices[0]"
         @drag-start="onDragStart"
-        @drag-move="(cx,cy) => onDragMove(itemId, cx, cy)"
-        @drag-end="(cx,cy) => onDragEnd(itemId, cx, cy)"
+        @drag-move="(cx,cy) => onDragMove(shuffledChoices[0], cx, cy)"
+        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[0], cx, cy)"
+      />
+
+      <DraggableItem
+        v-if="shuffledChoices[1]"
+        :key="`tr-${puzzle.targetId}-${shuffledChoices[1]}`"
+        class="pos-tr"
+        :item-id="shuffledChoices[1]"
+        :card-index="1"
+        :disabled="isSolved"
+        :wobble="wobbleId === shuffledChoices[1]"
+        :dimmed="draggingId !== null && draggingId !== shuffledChoices[1]"
+        @drag-start="onDragStart"
+        @drag-move="(cx,cy) => onDragMove(shuffledChoices[1], cx, cy)"
+        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[1], cx, cy)"
+      />
+
+      <DropZone
+        ref="dropZoneRef"
+        class="pos-center"
+        :target-id="puzzle.targetId"
+        :zone-bg="level.zoneBg"
+        :is-hovering="isHovering"
+        :is-solved="isSolved"
+      />
+
+      <DraggableItem
+        v-if="shuffledChoices[2]"
+        :key="`bl-${puzzle.targetId}-${shuffledChoices[2]}`"
+        class="pos-bl"
+        :item-id="shuffledChoices[2]"
+        :card-index="2"
+        :disabled="isSolved"
+        :wobble="wobbleId === shuffledChoices[2]"
+        :dimmed="draggingId !== null && draggingId !== shuffledChoices[2]"
+        @drag-start="onDragStart"
+        @drag-move="(cx,cy) => onDragMove(shuffledChoices[2], cx, cy)"
+        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[2], cx, cy)"
+      />
+
+      <DraggableItem
+        v-if="shuffledChoices[3]"
+        :key="`br-${puzzle.targetId}-${shuffledChoices[3]}`"
+        class="pos-br"
+        :item-id="shuffledChoices[3]"
+        :card-index="3"
+        :disabled="isSolved"
+        :wobble="wobbleId === shuffledChoices[3]"
+        :dimmed="draggingId !== null && draggingId !== shuffledChoices[3]"
+        @drag-start="onDragStart"
+        @drag-move="(cx,cy) => onDragMove(shuffledChoices[3], cx, cy)"
+        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[3], cx, cy)"
       />
     </div>
 
@@ -128,10 +172,10 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 12px 12px 14px;
+  justify-content: center;
+  padding: 12px;
   box-sizing: border-box;
-  gap: 10px;
+  gap: 14px;
 }
 
 .header {
@@ -149,28 +193,62 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
   background: white;
   border: 3px solid;
   border-radius: 9999px;
-  padding: 0.35rem 1.1rem;
+  padding: 0.3rem 1rem;
   font-family: "Nunito", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: 900;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
 }
 
-.progress-dots {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
+.progress-dots { display: flex; align-items: center; gap: 7px; }
 .dot { border-radius: 50%; transition: all 0.3s ease; }
 .dot.done    { width: 11px; height: 11px; background: #7C3AED; }
 .dot.current { width: 15px; height: 15px; background: #a78bfa; box-shadow: 0 0 0 3px rgba(167,139,250,0.35); }
 .dot.todo    { width: 11px; height: 11px; background: rgba(255,255,255,0.6); border: 2px solid rgba(0,0,0,0.15); }
 
-.choices-grid {
+/* ── 3x3 grid ─────────────────────────────────────────────── */
+.play-area {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  grid-template-rows: 1fr 1.5fr 1fr;
   gap: 8px;
   width: 100%;
   max-width: 440px;
+  aspect-ratio: 1;
+}
+
+.pos-tl     { grid-row: 1; grid-column: 1; }
+.pos-tr     { grid-row: 1; grid-column: 3; }
+.pos-center { grid-row: 2; grid-column: 2; }
+.pos-bl     { grid-row: 3; grid-column: 1; }
+.pos-br     { grid-row: 3; grid-column: 3; }
+
+/* Cards fill their grid cell */
+.play-area :deep(.item-card) {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 18px;
+}
+
+/* Stage fills its grid cell */
+.play-area :deep(.stage-frame) {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 18px;
+}
+
+/* SVGs inside corner cards */
+.pos-tl :deep(svg),
+.pos-tr :deep(svg),
+.pos-bl :deep(svg),
+.pos-br :deep(svg) {
+  width: 65% !important;
+  height: 65% !important;
+}
+
+/* SVG inside center stage */
+.pos-center :deep(svg) {
+  width: 62% !important;
+  height: 62% !important;
 }
 </style>
