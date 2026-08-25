@@ -70,6 +70,159 @@ export const svgContent: Record<ItemId, string> = {
     </g>
   `,
 
+  // ── FRUITS ───────────────────────────────────────────────────────────────
+  mango: `
+    <defs><filter id="f-mng" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-mng)">
+      <path d="M60,108 C36,108 16,90 12,68 C8,46 18,26 38,18 C54,12 70,14 84,24 C100,36 108,56 104,76 C100,96 82,108 60,108Z"
+        fill="#FF9800" stroke="#E65100" stroke-width="4"/>
+      <ellipse cx="78" cy="38" rx="16" ry="22" fill="#FF5722" opacity="0.35" transform="rotate(20 78 38)"/>
+      <ellipse cx="42" cy="76" rx="14" ry="18" fill="#FFD54F" opacity="0.5" transform="rotate(-10 42 76)"/>
+      <line x1="56" y1="16" x2="52" y2="4" stroke="#5D4037" stroke-width="5" stroke-linecap="round"/>
+      <path d="M52,5 Q38,0 34,10 Q46,16 52,10Z" fill="#4CAF50" stroke="#2E7D32" stroke-width="2"/>
+      <ellipse cx="40" cy="56" rx="8" ry="14" fill="rgba(255,255,255,0.3)" transform="rotate(-20 40 56)"/>
+    </g>
+  `,
+
+  grapes: `
+    <defs><filter id="f-grp" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-grp)">
+      <line x1="60" y1="6" x2="60" y2="22" stroke="#5D4037" stroke-width="5" stroke-linecap="round"/>
+      <path d="M60,18 Q42,6 36,18 Q48,30 60,22Z" fill="#66BB6A" stroke="#388E3C" stroke-width="2.5"/>
+      <path d="M60,18 Q78,6 84,18 Q72,30 60,22Z" fill="#4CAF50" stroke="#388E3C" stroke-width="2.5"/>
+      <circle cx="34" cy="42" r="13" fill="#7B1FA2" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="58" cy="40" r="13" fill="#9C27B0" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="82" cy="42" r="13" fill="#7B1FA2" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="34" cy="66" r="13" fill="#9C27B0" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="58" cy="64" r="13" fill="#7B1FA2" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="82" cy="66" r="13" fill="#9C27B0" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="46" cy="88" r="13" fill="#7B1FA2" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="70" cy="88" r="13" fill="#9C27B0" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="58" cy="106" r="11" fill="#7B1FA2" stroke="#4A148C" stroke-width="2.5"/>
+      <circle cx="30" cy="38" r="4" fill="rgba(255,255,255,0.35)"/>
+      <circle cx="54" cy="36" r="4" fill="rgba(255,255,255,0.35)"/>
+      <circle cx="78" cy="38" r="4" fill="rgba(255,255,255,0.35)"/>
+    </g>
+  `,
+
+  orange: `
+    <defs><filter id="f-org" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-org)">
+      <circle cx="60" cy="66" r="46" fill="#FF9800" stroke="#E65100" stroke-width="4"/>
+      <circle cx="60" cy="108" r="6" fill="#F57C00" stroke="#E65100" stroke-width="2"/>
+      <line x1="60" y1="20" x2="60" y2="10" stroke="#5D4037" stroke-width="5" stroke-linecap="round"/>
+      <path d="M60,12 Q46,4 42,14 Q52,22 60,16Z" fill="#4CAF50" stroke="#2E7D32" stroke-width="2.5"/>
+      <path d="M60,12 Q74,4 78,14 Q68,22 60,16Z" fill="#66BB6A" stroke="#2E7D32" stroke-width="2.5"/>
+      <ellipse cx="44" cy="50" rx="10" ry="14" fill="rgba(255,255,255,0.35)" transform="rotate(-20 44 50)"/>
+    </g>
+  `,
+
+  watermelon: `
+    <defs><filter id="f-wml" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-wml)">
+      <path d="M6,78 A54,54 0 0,1 114,78 Z" fill="#4CAF50" stroke="#2E7D32" stroke-width="4"/>
+      <path d="M6,78 Q6,76 6,78 A54,54 0 0,1 114,78" fill="none" stroke="#2E7D32" stroke-width="4"/>
+      <path d="M14,78 A46,46 0 0,1 106,78 Z" fill="white"/>
+      <path d="M20,78 A40,40 0 0,1 100,78 Z" fill="#EF5350"/>
+      <path d="M10,78 Q34,24 60,20 Q86,24 110,78" fill="none" stroke="#388E3C" stroke-width="3" opacity="0.5"/>
+      <path d="M6,78 Q26,30 60,22 Q94,30 114,78" fill="none" stroke="#388E3C" stroke-width="2.5" opacity="0.35"/>
+      <ellipse cx="40" cy="62" rx="3.5" ry="6" fill="#1a1a1a" transform="rotate(-20 40 62)"/>
+      <ellipse cx="60" cy="56" rx="3.5" ry="6" fill="#1a1a1a"/>
+      <ellipse cx="80" cy="62" rx="3.5" ry="6" fill="#1a1a1a" transform="rotate(20 80 62)"/>
+      <ellipse cx="50" cy="48" rx="3" ry="5" fill="#1a1a1a" transform="rotate(-10 50 48)"/>
+      <ellipse cx="70" cy="48" rx="3" ry="5" fill="#1a1a1a" transform="rotate(10 70 48)"/>
+    </g>
+  `,
+
+  strawberry: `
+    <defs><filter id="f-str" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-str)">
+      <path d="M60,104 Q30,82 24,60 Q18,38 34,26 Q48,16 60,28 Q72,16 86,26 Q102,38 96,60 Q90,82 60,104Z"
+        fill="#E53935" stroke="#B71C1C" stroke-width="4"/>
+      <ellipse cx="44" cy="50" rx="2.5" ry="3.5" fill="#FFEB3B" transform="rotate(-10 44 50)"/>
+      <ellipse cx="60" cy="44" rx="2.5" ry="3.5" fill="#FFEB3B"/>
+      <ellipse cx="76" cy="50" rx="2.5" ry="3.5" fill="#FFEB3B" transform="rotate(10 76 50)"/>
+      <ellipse cx="38" cy="68" rx="2.5" ry="3.5" fill="#FFEB3B" transform="rotate(-5 38 68)"/>
+      <ellipse cx="56" cy="66" rx="2.5" ry="3.5" fill="#FFEB3B"/>
+      <ellipse cx="74" cy="68" rx="2.5" ry="3.5" fill="#FFEB3B" transform="rotate(5 74 68)"/>
+      <ellipse cx="46" cy="84" rx="2.5" ry="3.5" fill="#FFEB3B"/>
+      <ellipse cx="70" cy="84" rx="2.5" ry="3.5" fill="#FFEB3B"/>
+      <path d="M50,24 Q42,12 44,6 Q50,14 54,22" fill="#4CAF50" stroke="#2E7D32" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M60,22 Q58,8 62,4 Q66,10 64,22" fill="#66BB6A" stroke="#2E7D32" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M70,24 Q78,12 76,6 Q70,14 66,22" fill="#4CAF50" stroke="#2E7D32" stroke-width="2.5" stroke-linejoin="round"/>
+      <ellipse cx="42" cy="48" rx="8" ry="12" fill="rgba(255,255,255,0.28)" transform="rotate(-20 42 48)"/>
+    </g>
+  `,
+
+  pineapple: `
+    <defs><filter id="f-pin" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-pin)">
+      <path d="M50,20 Q46,6 48,2 Q52,10 54,20" fill="#558B2F" stroke="#33691E" stroke-width="2"/>
+      <path d="M58,18 Q56,2 60,0 Q64,2 62,18" fill="#689F38" stroke="#33691E" stroke-width="2"/>
+      <path d="M66,20 Q70,6 72,2 Q70,10 68,20" fill="#558B2F" stroke="#33691E" stroke-width="2"/>
+      <path d="M44,24 Q36,14 38,8 Q44,16 48,24" fill="#558B2F" stroke="#33691E" stroke-width="2"/>
+      <path d="M74,24 Q80,16 84,8 Q80,14 74,24" fill="#558B2F" stroke="#33691E" stroke-width="2"/>
+      <ellipse cx="60" cy="74" rx="34" ry="46" fill="#FFD54F" stroke="#F9A825" stroke-width="4"/>
+      <line x1="44" y1="34" x2="76" y2="34" stroke="#F57F17" stroke-width="1.5" opacity="0.55"/>
+      <line x1="36" y1="52" x2="84" y2="52" stroke="#F57F17" stroke-width="1.5" opacity="0.55"/>
+      <line x1="30" y1="70" x2="90" y2="70" stroke="#F57F17" stroke-width="1.5" opacity="0.55"/>
+      <line x1="30" y1="88" x2="90" y2="88" stroke="#F57F17" stroke-width="1.5" opacity="0.55"/>
+      <line x1="36" y1="106" x2="84" y2="106" stroke="#F57F17" stroke-width="1.5" opacity="0.55"/>
+      <line x1="38" y1="30" x2="28" y2="118" stroke="#F57F17" stroke-width="1.5" opacity="0.45"/>
+      <line x1="52" y1="26" x2="46" y2="120" stroke="#F57F17" stroke-width="1.5" opacity="0.45"/>
+      <line x1="66" y1="26" x2="70" y2="120" stroke="#F57F17" stroke-width="1.5" opacity="0.45"/>
+      <line x1="80" y1="30" x2="90" y2="118" stroke="#F57F17" stroke-width="1.5" opacity="0.45"/>
+      <ellipse cx="44" cy="58" rx="7" ry="14" fill="rgba(255,255,255,0.3)" transform="rotate(-15 44 58)"/>
+    </g>
+  `,
+
+  pear: `
+    <defs><filter id="f-pea" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-pea)">
+      <path d="M60,14 C72,14 78,26 78,38 C86,44 96,60 96,78 C96,100 80,116 60,116 C40,116 24,100 24,78 C24,60 34,44 42,38 C42,26 48,14 60,14Z"
+        fill="#AED581" stroke="#558B2F" stroke-width="4"/>
+      <line x1="60" y1="14" x2="60" y2="4" stroke="#5D4037" stroke-width="5" stroke-linecap="round"/>
+      <path d="M60,6 Q46,0 42,10 Q52,18 60,10Z" fill="#4CAF50" stroke="#2E7D32" stroke-width="2.5"/>
+      <path d="M60,6 Q74,0 78,10 Q68,18 60,10Z" fill="#66BB6A" stroke="#2E7D32" stroke-width="2.5"/>
+      <ellipse cx="44" cy="72" rx="8" ry="16" fill="rgba(255,255,255,0.32)" transform="rotate(-10 44 72)"/>
+    </g>
+  `,
+
   // ── FOOD ─────────────────────────────────────────────────────────────────
   apple: `
     <defs><filter id="f-ap" x="-25%" y="-25%" width="150%" height="150%">
