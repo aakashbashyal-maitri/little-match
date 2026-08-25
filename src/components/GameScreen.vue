@@ -145,7 +145,7 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 
     <StarBurst :active="burstActive" :x="burstX" :y="burstY" />
 
-    <!-- Bottom bar: level name left, progress dots right -->
+    <!-- Bottom bar: centered, name on top, progress dots below -->
     <div class="bottom-bar">
       <div class="level-pill" :style="{ color: level.accent, borderColor: level.accent }">
         <span>{{ level.emoji }}</span>
@@ -180,11 +180,11 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 
 .bottom-bar {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 8px;
   width: 100%;
   max-width: 440px;
-  padding: 0 4px;
 }
 
 .level-pill {

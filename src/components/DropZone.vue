@@ -38,11 +38,10 @@ defineExpose({ el })
 
 <style scoped>
 .stage-frame {
-  /* White background + black border — no stripes */
   position: relative;
   border-radius: 22px;
   border: 4px solid #1a1a1a;
-  background: #ffffff;
+  background: #d4d4d4;
   box-shadow: 0 5px 18px rgba(0,0,0,0.18), 0 2px 5px rgba(0,0,0,0.10);
   display: flex;
   align-items: center;

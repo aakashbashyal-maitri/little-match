@@ -11,7 +11,7 @@ const props = defineProps<{
 
 const filterStyle = computed(() =>
   props.mode === 'silhouette'
-    ? 'brightness(0) opacity(0.82)'
+    ? 'brightness(0) invert(1) drop-shadow(3px 0 0 #1a1a1a) drop-shadow(-3px 0 0 #1a1a1a) drop-shadow(0 3px 0 #1a1a1a) drop-shadow(0 -3px 0 #1a1a1a)'
     : 'none'
 )
 </script>
