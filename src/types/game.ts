@@ -5,6 +5,8 @@ export type ItemId =
   | 'cow'    | 'elephant' | 'monkey' | 'chicken' | 'buffalo'
   | 'tiger'  | 'lion'    | 'panda'  | 'rhino' | 'kangaroo' | 'giraffe' | 'goat'
   | 'mango' | 'grapes' | 'orange' | 'watermelon' | 'strawberry' | 'pineapple' | 'pear'
+  | 'cup' | 'comb' | 'book' | 'ball' | 'umbrella' | 'shoe' | 'clock' | 'bag' | 'key' | 'scissors'
+  | 'car' | 'bus' | 'bike' | 'scooter' | 'cycle' | 'airplane' | 'boat' | 'train' | 'truck'
 
 export interface Puzzle {
   targetId: ItemId

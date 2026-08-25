@@ -785,4 +785,388 @@ export const svgContent: Record<ItemId, string> = {
       <path d="M60,80 Q67,88 71,86" fill="none" stroke="#AD1457" stroke-width="2.5" stroke-linecap="round"/>
     </g>
   `,
+
+  // ── EVERYDAY OBJECTS ─────────────────────────────────────────────────────
+  cup: `
+    <defs><filter id="f-cup" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-cup)">
+      <path d="M28,24 L36,106 Q36,112 44,112 L76,112 Q84,112 84,106 L92,24 Z" fill="#42A5F5" stroke="#1565C0" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M92,40 Q112,40 112,58 Q112,76 92,76" fill="none" stroke="#1565C0" stroke-width="8" stroke-linecap="round"/>
+      <path d="M92,40 Q108,40 108,58 Q108,76 92,76" fill="none" stroke="#64B5F6" stroke-width="4" stroke-linecap="round"/>
+      <rect x="28" y="24" width="64" height="10" rx="4" fill="#1565C0"/>
+      <rect x="36" y="36" width="48" height="5" rx="2" fill="rgba(255,255,255,0.35)"/>
+      <rect x="38" y="44" width="44" height="5" rx="2" fill="rgba(255,255,255,0.25)"/>
+    </g>
+  `,
+
+  comb: `
+    <defs><filter id="f-cmb" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-cmb)">
+      <rect x="6" y="42" width="108" height="30" rx="8" fill="#F06292" stroke="#C2185B" stroke-width="4"/>
+      <rect x="14" y="72" width="7" height="30" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="27" y="72" width="7" height="28" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="40" y="72" width="7" height="30" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="53" y="72" width="7" height="28" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="66" y="72" width="7" height="30" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="79" y="72" width="7" height="28" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="92" y="72" width="7" height="30" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="105" y="72" width="7" height="28" rx="3" fill="#F06292" stroke="#C2185B" stroke-width="3"/>
+      <rect x="10" y="48" width="60" height="8" rx="4" fill="rgba(255,255,255,0.35)"/>
+    </g>
+  `,
+
+  book: `
+    <defs><filter id="f-boo" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-boo)">
+      <path d="M60,20 Q44,14 10,18 L10,108 Q44,104 60,110 Q76,104 110,108 L110,18 Q76,14 60,20Z" fill="#EF5350" stroke="#B71C1C" stroke-width="4"/>
+      <path d="M60,20 L60,110" stroke="#B71C1C" stroke-width="5"/>
+      <path d="M12,24 Q44,20 58,26" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M12,36 Q44,32 58,38" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M12,48 Q44,44 58,50" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M12,60 Q44,56 58,62" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M62,26 Q76,20 108,24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M62,38 Q76,32 108,36" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M62,50 Q76,44 108,48" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  `,
+
+  ball: `
+    <defs><filter id="f-bal" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-bal)">
+      <circle cx="60" cy="60" r="52" fill="white" stroke="#1a1a1a" stroke-width="4"/>
+      <path d="M60,8 Q80,30 80,60 Q80,90 60,112" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="2"/>
+      <path d="M60,8 Q40,30 40,60 Q40,90 60,112" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+      <path d="M8,60 Q30,40 60,40 Q90,40 112,60" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+      <path d="M8,60 Q30,80 60,80 Q90,80 112,60" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+      <path d="M22,28 Q44,36 52,60" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+      <path d="M22,92 Q44,84 52,60" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+      <path d="M98,28 Q76,36 68,60" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+      <path d="M98,92 Q76,84 68,60" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    </g>
+  `,
+
+  umbrella: `
+    <defs><filter id="f-umb" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-umb)">
+      <path d="M8,60 Q8,10 60,8 Q112,10 112,60 Z" fill="#FF7043" stroke="#BF360C" stroke-width="4"/>
+      <path d="M8,60 Q30,45 60,60 Q90,45 112,60" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="3"/>
+      <path d="M30,60 Q30,52 60,56 Q90,52 90,60" fill="#FFAB40" stroke="#BF360C" stroke-width="2.5" opacity="0.7"/>
+      <path d="M60,60 Q46,42 36,28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
+      <path d="M60,60 Q74,42 84,28" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
+      <line x1="60" y1="58" x2="60" y2="104" stroke="#795548" stroke-width="7" stroke-linecap="round"/>
+      <path d="M60,104 Q60,118 46,118 Q34,118 34,108" fill="none" stroke="#795548" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  `,
+
+  shoe: `
+    <defs><filter id="f-sho" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-sho)">
+      <path d="M10,90 Q10,106 30,108 L98,108 Q114,108 114,96 Q114,86 100,86 L70,86 Q60,86 54,74 L44,50 Q40,38 30,36 L20,36 Q10,36 10,50 Z" fill="#E53935" stroke="#B71C1C" stroke-width="4"/>
+      <path d="M10,50 Q10,42 20,40 L30,40 Q38,40 44,52 L54,78 Q60,90 70,90 L100,90 Q110,90 112,96" fill="none" stroke="#FFCDD2" stroke-width="3" opacity="0.6"/>
+      <path d="M30,36 Q40,28 54,32 L68,50" fill="none" stroke="#B71C1C" stroke-width="4" stroke-linecap="round"/>
+      <path d="M54,34 L60,30 M62,38 L68,34 M70,44 L76,40" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M10,98 L114,98" stroke="#B71C1C" stroke-width="3" opacity="0.5"/>
+    </g>
+  `,
+
+  clock: `
+    <defs><filter id="f-clk" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-clk)">
+      <circle cx="60" cy="64" r="52" fill="#FFF9C4" stroke="#F9A825" stroke-width="5"/>
+      <circle cx="60" cy="64" r="44" fill="white" stroke="#F9A825" stroke-width="3"/>
+      <line x1="60" y1="26" x2="60" y2="36" stroke="#F9A825" stroke-width="4" stroke-linecap="round"/>
+      <line x1="60" y1="92" x2="60" y2="102" stroke="#F9A825" stroke-width="4" stroke-linecap="round"/>
+      <line x1="22" y1="64" x2="32" y2="64" stroke="#F9A825" stroke-width="4" stroke-linecap="round"/>
+      <line x1="88" y1="64" x2="98" y2="64" stroke="#F9A825" stroke-width="4" stroke-linecap="round"/>
+      <line x1="60" y1="64" x2="60" y2="36" stroke="#E53935" stroke-width="4" stroke-linecap="round"/>
+      <line x1="60" y1="64" x2="86" y2="72" stroke="#1565C0" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="60" cy="64" r="4" fill="#333"/>
+      <rect x="46" y="8" width="28" height="10" rx="5" fill="#F9A825" stroke="#E65100" stroke-width="2"/>
+    </g>
+  `,
+
+  bag: `
+    <defs><filter id="f-bag" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-bag)">
+      <path d="M42,34 Q42,18 60,18 Q78,18 78,34" fill="none" stroke="#6A1B9A" stroke-width="8" stroke-linecap="round"/>
+      <rect x="10" y="34" width="100" height="80" rx="16" fill="#AB47BC" stroke="#6A1B9A" stroke-width="4"/>
+      <rect x="10" y="34" width="100" height="20" rx="10" fill="#7B1FA2" stroke="#6A1B9A" stroke-width="3"/>
+      <rect x="38" y="66" width="44" height="14" rx="7" fill="#6A1B9A" stroke="#4A148C" stroke-width="2.5"/>
+      <rect x="18" y="42" width="50" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
+    </g>
+  `,
+
+  key: `
+    <defs><filter id="f-key" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-key)">
+      <circle cx="32" cy="50" r="26" fill="#FFD600" stroke="#F57F17" stroke-width="5"/>
+      <circle cx="32" cy="50" r="12" fill="white" stroke="#F57F17" stroke-width="4"/>
+      <rect x="54" y="44" width="60" height="14" rx="7" fill="#FFD600" stroke="#F57F17" stroke-width="4"/>
+      <rect x="96" y="58" width="10" height="18" rx="5" fill="#FFD600" stroke="#F57F17" stroke-width="3"/>
+      <rect x="80" y="58" width="10" height="14" rx="5" fill="#FFD600" stroke="#F57F17" stroke-width="3"/>
+      <circle cx="28" cy="46" r="4" fill="rgba(255,255,255,0.5)"/>
+    </g>
+  `,
+
+  scissors: `
+    <defs><filter id="f-sci" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-sci)">
+      <circle cx="30" cy="36" r="20" fill="none" stroke="#E53935" stroke-width="7"/>
+      <circle cx="30" cy="84" r="20" fill="none" stroke="#1565C0" stroke-width="7"/>
+      <circle cx="30" cy="36" r="10" fill="#FFCDD2" stroke="#E53935" stroke-width="3"/>
+      <circle cx="30" cy="84" r="10" fill="#BBDEFB" stroke="#1565C0" stroke-width="3"/>
+      <line x1="44" y1="46" x2="108" y2="96" stroke="#E53935" stroke-width="8" stroke-linecap="round"/>
+      <line x1="44" y1="74" x2="108" y2="24" stroke="#1565C0" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="74" cy="60" r="7" fill="#FFF9C4" stroke="#F9A825" stroke-width="3"/>
+    </g>
+  `,
+
+  // ── VEHICLES ─────────────────────────────────────────────────────────────
+  car: `
+    <defs><filter id="f-car" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-car)">
+      <rect x="6" y="60" width="108" height="38" rx="10" fill="#E53935" stroke="#B71C1C" stroke-width="4"/>
+      <path d="M20,60 Q30,30 50,26 L74,26 Q94,30 104,60 Z" fill="#EF5350" stroke="#B71C1C" stroke-width="4"/>
+      <rect x="32" y="30" width="26" height="28" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="62" y="30" width="26" height="28" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <circle cx="30" cy="98" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="30" cy="98" r="8" fill="#777"/>
+      <circle cx="90" cy="98" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="90" cy="98" r="8" fill="#777"/>
+      <rect x="6" y="70" width="12" height="8" rx="3" fill="#FFF9C4" stroke="#F9A825" stroke-width="2"/>
+      <rect x="102" y="70" width="12" height="8" rx="3" fill="#FF8F00" stroke="#E65100" stroke-width="2"/>
+    </g>
+  `,
+
+  bus: `
+    <defs><filter id="f-bus" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-bus)">
+      <rect x="6" y="16" width="108" height="80" rx="10" fill="#FF8F00" stroke="#E65100" stroke-width="4"/>
+      <rect x="6" y="16" width="108" height="16" rx="8" fill="#E65100"/>
+      <rect x="14" y="36" width="20" height="20" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="40" y="36" width="20" height="20" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="66" y="36" width="20" height="20" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="92" y="36" width="16" height="20" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="14" y="62" width="20" height="20" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="40" y="62" width="20" height="20" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="66" y="62" width="20" height="20" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <circle cx="28" cy="96" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="28" cy="96" r="7" fill="#777"/>
+      <circle cx="90" cy="96" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="90" cy="96" r="7" fill="#777"/>
+      <rect x="6" y="22" width="30" height="8" rx="3" fill="#FFF9C4" stroke="#F9A825" stroke-width="2"/>
+    </g>
+  `,
+
+  bike: `
+    <defs><filter id="f-bik" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-bik)">
+      <circle cx="24" cy="82" r="26" fill="none" stroke="#1565C0" stroke-width="7"/>
+      <circle cx="96" cy="82" r="26" fill="none" stroke="#1565C0" stroke-width="7"/>
+      <circle cx="24" cy="82" r="6" fill="#1565C0"/>
+      <circle cx="96" cy="82" r="6" fill="#1565C0"/>
+      <line x1="24" y1="82" x2="60" y2="44" stroke="#E53935" stroke-width="6" stroke-linecap="round"/>
+      <line x1="60" y1="44" x2="96" y2="82" stroke="#E53935" stroke-width="6" stroke-linecap="round"/>
+      <line x1="60" y1="44" x2="40" y2="82" stroke="#E53935" stroke-width="6" stroke-linecap="round"/>
+      <line x1="40" y1="82" x2="24" y2="82" stroke="#E53935" stroke-width="5" stroke-linecap="round"/>
+      <line x1="60" y1="44" x2="60" y2="30" stroke="#333" stroke-width="5" stroke-linecap="round"/>
+      <line x1="50" y1="30" x2="70" y2="30" stroke="#333" stroke-width="6" stroke-linecap="round"/>
+      <ellipse cx="40" cy="82" rx="5" ry="5" fill="#FF8F00"/>
+      <line x1="40" y1="44" x2="60" y2="44" stroke="#555" stroke-width="5" stroke-linecap="round"/>
+      <rect x="36" y="38" width="8" height="10" rx="3" fill="#FF8F00" stroke="#E65100" stroke-width="2"/>
+    </g>
+  `,
+
+  scooter: `
+    <defs><filter id="f-sco" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-sco)">
+      <circle cx="88" cy="88" r="24" fill="none" stroke="#7B1FA2" stroke-width="7"/>
+      <circle cx="30" cy="96" r="16" fill="none" stroke="#7B1FA2" stroke-width="6"/>
+      <circle cx="88" cy="88" r="6" fill="#7B1FA2"/>
+      <circle cx="30" cy="96" r="5" fill="#7B1FA2"/>
+      <path d="M30,96 L50,68 L88,68 L88,88" fill="none" stroke="#AB47BC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="50" y1="68" x2="44" y2="28" stroke="#AB47BC" stroke-width="8" stroke-linecap="round"/>
+      <line x1="30" y1="28" x2="58" y2="28" stroke="#6A1B9A" stroke-width="8" stroke-linecap="round"/>
+      <rect x="56" y="22" width="10" height="12" rx="4" fill="#AB47BC" stroke="#6A1B9A" stroke-width="2"/>
+    </g>
+  `,
+
+  cycle: `
+    <defs><filter id="f-cyc" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-cyc)">
+      <circle cx="22" cy="84" r="28" fill="none" stroke="#2E7D32" stroke-width="7"/>
+      <circle cx="98" cy="84" r="28" fill="none" stroke="#2E7D32" stroke-width="7"/>
+      <circle cx="22" cy="84" r="7" fill="#2E7D32"/>
+      <circle cx="98" cy="84" r="7" fill="#2E7D32"/>
+      <line x1="22" y1="84" x2="60" y2="46" stroke="#FF8F00" stroke-width="6" stroke-linecap="round"/>
+      <line x1="60" y1="46" x2="98" y2="84" stroke="#FF8F00" stroke-width="6" stroke-linecap="round"/>
+      <line x1="60" y1="46" x2="38" y2="84" stroke="#FF8F00" stroke-width="6" stroke-linecap="round"/>
+      <line x1="38" y1="84" x2="22" y2="84" stroke="#FF8F00" stroke-width="5" stroke-linecap="round"/>
+      <line x1="60" y1="46" x2="60" y2="30" stroke="#555" stroke-width="5" stroke-linecap="round"/>
+      <line x1="50" y1="30" x2="72" y2="30" stroke="#555" stroke-width="6" stroke-linecap="round"/>
+      <ellipse cx="38" cy="84" rx="6" ry="6" fill="#FF8F00"/>
+      <line x1="38" y1="46" x2="60" y2="46" stroke="#555" stroke-width="5" stroke-linecap="round"/>
+      <rect x="34" y="40" width="8" height="10" rx="3" fill="#FF8F00" stroke="#E65100" stroke-width="2"/>
+    </g>
+  `,
+
+  airplane: `
+    <defs><filter id="f-air" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-air)">
+      <path d="M8,54 Q20,44 60,46 Q96,48 114,54 Q96,60 60,62 Q20,64 8,54Z" fill="#42A5F5" stroke="#1565C0" stroke-width="4"/>
+      <path d="M10,54 Q24,26 36,26 L50,54 Z" fill="#1565C0" stroke="#0D47A1" stroke-width="3"/>
+      <path d="M10,54 Q24,82 36,82 L50,54 Z" fill="#1565C0" stroke="#0D47A1" stroke-width="3"/>
+      <path d="M84,54 Q96,40 112,42 L112,54 L112,66 Q96,68 84,54Z" fill="#64B5F6" stroke="#1565C0" stroke-width="3"/>
+      <path d="M110,54 Q108,46 112,44 L114,54 L112,64 Q108,62 110,54Z" fill="#1565C0"/>
+      <rect x="38" y="48" width="14" height="12" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2"/>
+      <rect x="56" y="48" width="14" height="12" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2"/>
+    </g>
+  `,
+
+  boat: `
+    <defs><filter id="f-boa" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-boa)">
+      <path d="M6,72 Q6,96 60,100 Q114,96 114,72 Z" fill="#1565C0" stroke="#0D47A1" stroke-width="4"/>
+      <rect x="22" y="36" width="72" height="38" rx="6" fill="#E53935" stroke="#B71C1C" stroke-width="4"/>
+      <rect x="30" y="44" width="18" height="18" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="54" y="44" width="18" height="18" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="78" y="44" width="10" height="18" rx="4" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <line x1="58" y1="36" x2="58" y2="14" stroke="#795548" stroke-width="5" stroke-linecap="round"/>
+      <path d="M58,14 L58,32 L80,26 Z" fill="#FDD835" stroke="#F9A825" stroke-width="2.5"/>
+      <path d="M6,78 Q60,110 114,78" fill="none" stroke="#42A5F5" stroke-width="3" opacity="0.5"/>
+    </g>
+  `,
+
+  train: `
+    <defs><filter id="f-trn" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-trn)">
+      <rect x="6" y="30" width="108" height="58" rx="10" fill="#E53935" stroke="#B71C1C" stroke-width="4"/>
+      <rect x="6" y="30" width="32" height="58" rx="8" fill="#C62828" stroke="#B71C1C" stroke-width="3"/>
+      <ellipse cx="22" cy="22" rx="10" ry="14" fill="#795548" stroke="#4E342E" stroke-width="3"/>
+      <ellipse cx="22" cy="22" rx="5" ry="9" fill="#9E9E9E"/>
+      <rect x="16" y="40" width="20" height="20" rx="5" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="44" y="40" width="20" height="20" rx="5" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="70" y="40" width="20" height="20" rx="5" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="96" y="40" width="14" height="20" rx="5" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <circle cx="26" cy="88" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="26" cy="88" r="7" fill="#777"/>
+      <circle cx="60" cy="88" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="60" cy="88" r="7" fill="#777"/>
+      <circle cx="94" cy="88" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="94" cy="88" r="7" fill="#777"/>
+      <line x1="6" y1="88" x2="114" y2="88" stroke="#555" stroke-width="4" opacity="0.4"/>
+    </g>
+  `,
+
+  truck: `
+    <defs><filter id="f-trk" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-trk)">
+      <rect x="34" y="20" width="80" height="68" rx="6" fill="#546E7A" stroke="#263238" stroke-width="4"/>
+      <path d="M6,44 Q6,32 18,32 L34,32 L34,88 L6,88 Z" fill="#78909C" stroke="#263238" stroke-width="4"/>
+      <rect x="10" y="44" width="22" height="22" rx="5" fill="#B3E5FC" stroke="#0288D1" stroke-width="2.5"/>
+      <rect x="10" y="72" width="22" height="10" rx="4" fill="#FFF9C4" stroke="#F9A825" stroke-width="2"/>
+      <circle cx="22" cy="98" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="22" cy="98" r="7" fill="#777"/>
+      <circle cx="84" cy="98" r="16" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="84" cy="98" r="7" fill="#777"/>
+      <circle cx="108" cy="98" r="12" fill="#333" stroke="#111" stroke-width="3"/>
+      <circle cx="108" cy="98" r="5" fill="#777"/>
+      <rect x="40" y="30" width="68" height="8" rx="3" fill="rgba(255,255,255,0.2)"/>
+    </g>
+  `,
 }
