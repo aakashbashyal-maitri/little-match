@@ -309,7 +309,208 @@ export const svgContent: Record<ItemId, string> = {
     </g>
   `,
 
+  // ── MORE ANIMALS ─────────────────────────────────────────────────────────
+  tiger: `
+    <defs><filter id="f-tig" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-tig)">
+      <ellipse cx="52" cy="78" rx="38" ry="22" fill="#FF8F00" stroke="#E65100" stroke-width="4"/>
+      <circle cx="84" cy="54" r="22" fill="#FF8F00" stroke="#E65100" stroke-width="4"/>
+      <polygon points="70,34 64,18 80,30" fill="#FF8F00" stroke="#E65100" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="97,32 103,18 93,28" fill="#FF8F00" stroke="#E65100" stroke-width="3" stroke-linejoin="round"/>
+      <polygon points="72,34 67,22 78,30" fill="#FFCCBC"/>
+      <polygon points="97,32 101,22 94,28" fill="#FFCCBC"/>
+      <ellipse cx="98" cy="62" rx="12" ry="9" fill="#FFF8E1" stroke="#E65100" stroke-width="2.5"/>
+      <circle cx="93" cy="63" r="2" fill="#5D4037"/>
+      <circle cx="103" cy="63" r="2" fill="#5D4037"/>
+      <circle cx="82" cy="48" r="5" fill="#FFF9C4"/>
+      <circle cx="83" cy="49" r="3.5" fill="#1a1a1a"/>
+      <circle cx="84" cy="48" r="1.2" fill="white"/>
+      <path d="M38,62 L36,92" stroke="#BF360C" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <path d="M52,58 L50,90" stroke="#BF360C" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <path d="M66,58 L64,90" stroke="#BF360C" stroke-width="4" stroke-linecap="round" opacity="0.6"/>
+      <path d="M80,34 Q78,28 80,26" stroke="#BF360C" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+      <path d="M88,34 Q90,28 88,26" stroke="#BF360C" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+      <rect x="70" y="94" width="11" height="24" rx="5" fill="#FF8F00" stroke="#E65100" stroke-width="3"/>
+      <rect x="54" y="96" width="11" height="22" rx="5" fill="#FF8F00" stroke="#E65100" stroke-width="3"/>
+      <rect x="32" y="96" width="11" height="22" rx="5" fill="#FF8F00" stroke="#E65100" stroke-width="3"/>
+      <rect x="16" y="94" width="11" height="24" rx="5" fill="#FF8F00" stroke="#E65100" stroke-width="3"/>
+      <path d="M14,74 Q2,86 6,102 Q8,112 18,114" fill="none" stroke="#E65100" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  `,
 
+  lion: `
+    <defs><filter id="f-lio" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-lio)">
+      <ellipse cx="50" cy="80" rx="36" ry="22" fill="#FFA000" stroke="#F57C00" stroke-width="4"/>
+      <circle cx="78" cy="54" r="34" fill="#F57C00" stroke="#BF360C" stroke-width="4"/>
+      <circle cx="78" cy="50" r="20" fill="#FFA000" stroke="#F57C00" stroke-width="3"/>
+      <ellipse cx="92" cy="58" rx="11" ry="9" fill="#FFE082" stroke="#F57C00" stroke-width="2.5"/>
+      <circle cx="87" cy="59" r="2" fill="#5D4037"/>
+      <circle cx="97" cy="59" r="2" fill="#5D4037"/>
+      <circle cx="76" cy="44" r="5" fill="#FFF9C4"/>
+      <circle cx="77" cy="45" r="3.5" fill="#1a1a1a"/>
+      <circle cx="78" cy="44" r="1.2" fill="white"/>
+      <ellipse cx="62" cy="26" rx="8" ry="6" fill="#FFA000" stroke="#F57C00" stroke-width="2.5" transform="rotate(-20 62 26)"/>
+      <ellipse cx="92" cy="24" rx="8" ry="6" fill="#FFA000" stroke="#F57C00" stroke-width="2.5" transform="rotate(20 92 24)"/>
+      <rect x="68" y="96" width="12" height="22" rx="6" fill="#FFA000" stroke="#F57C00" stroke-width="3"/>
+      <rect x="52" y="98" width="12" height="20" rx="6" fill="#FFA000" stroke="#F57C00" stroke-width="3"/>
+      <rect x="26" y="98" width="12" height="20" rx="6" fill="#FFA000" stroke="#F57C00" stroke-width="3"/>
+      <rect x="10" y="96" width="12" height="22" rx="6" fill="#FFA000" stroke="#F57C00" stroke-width="3"/>
+      <path d="M14,76 Q2,62 8,48" fill="none" stroke="#F57C00" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="8" cy="46" r="8" fill="#F57C00" stroke="#BF360C" stroke-width="2"/>
+    </g>
+  `,
+
+  panda: `
+    <defs><filter id="f-pan" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-pan)">
+      <ellipse cx="60" cy="84" rx="28" ry="26" fill="white" stroke="#1a1a1a" stroke-width="4"/>
+      <ellipse cx="28" cy="88" rx="14" ry="18" fill="#1a1a1a" transform="rotate(-15 28 88)"/>
+      <ellipse cx="92" cy="88" rx="14" ry="18" fill="#1a1a1a" transform="rotate(15 92 88)"/>
+      <circle cx="60" cy="50" r="28" fill="white" stroke="#1a1a1a" stroke-width="4"/>
+      <circle cx="36" cy="28" r="12" fill="#1a1a1a"/>
+      <circle cx="84" cy="28" r="12" fill="#1a1a1a"/>
+      <ellipse cx="48" cy="48" rx="12" ry="10" fill="#1a1a1a"/>
+      <ellipse cx="72" cy="48" rx="12" ry="10" fill="#1a1a1a"/>
+      <circle cx="48" cy="48" r="6" fill="white"/>
+      <circle cx="72" cy="48" r="6" fill="white"/>
+      <circle cx="49" cy="49" r="4" fill="#1a1a1a"/>
+      <circle cx="73" cy="49" r="4" fill="#1a1a1a"/>
+      <circle cx="50" cy="47" r="1.5" fill="white"/>
+      <circle cx="74" cy="47" r="1.5" fill="white"/>
+      <ellipse cx="60" cy="62" rx="7" ry="5" fill="#1a1a1a"/>
+      <path d="M54,68 Q60,74 66,68" fill="none" stroke="#1a1a1a" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="44" cy="108" rx="14" ry="10" fill="#1a1a1a"/>
+      <ellipse cx="76" cy="108" rx="14" ry="10" fill="#1a1a1a"/>
+    </g>
+  `,
+
+  rhino: `
+    <defs><filter id="f-rhi" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-rhi)">
+      <ellipse cx="52" cy="78" rx="44" ry="28" fill="#78909C" stroke="#455A64" stroke-width="4"/>
+      <ellipse cx="90" cy="56" rx="24" ry="20" fill="#78909C" stroke="#455A64" stroke-width="4"/>
+      <path d="M106,46 L116,10 L104,42 Z" fill="#90A4AE" stroke="#455A64" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="108" cy="62" rx="9" ry="7" fill="#607D8B" stroke="#455A64" stroke-width="2.5"/>
+      <circle cx="104" cy="62" r="2" fill="#263238"/>
+      <circle cx="112" cy="62" r="2" fill="#263238"/>
+      <circle cx="88" cy="48" r="5" fill="white"/>
+      <circle cx="89" cy="49" r="3.5" fill="#1a1a1a"/>
+      <ellipse cx="74" cy="42" rx="9" ry="7" fill="#90A4AE" stroke="#455A64" stroke-width="2.5" transform="rotate(-20 74 42)"/>
+      <path d="M64,58 Q60,70 66,82" fill="none" stroke="#455A64" stroke-width="2.5" opacity="0.6"/>
+      <rect x="72" y="100" width="14" height="18" rx="7" fill="#78909C" stroke="#455A64" stroke-width="3"/>
+      <rect x="54" y="102" width="14" height="16" rx="7" fill="#78909C" stroke="#455A64" stroke-width="3"/>
+      <rect x="28" y="102" width="14" height="16" rx="7" fill="#78909C" stroke="#455A64" stroke-width="3"/>
+      <rect x="10" y="100" width="14" height="18" rx="7" fill="#78909C" stroke="#455A64" stroke-width="3"/>
+      <path d="M8,74 Q2,64 6,56" fill="none" stroke="#455A64" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  `,
+
+  kangaroo: `
+    <defs><filter id="f-kan" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-kan)">
+      <path d="M16,88 Q8,98 12,112" fill="none" stroke="#8D6E63" stroke-width="18" stroke-linecap="round"/>
+      <path d="M16,88 Q8,98 12,112" fill="none" stroke="#D7CCC8" stroke-width="12" stroke-linecap="round"/>
+      <ellipse cx="56" cy="88" rx="24" ry="28" fill="#D7CCC8" stroke="#8D6E63" stroke-width="4"/>
+      <path d="M72,106 Q90,118 108,112" fill="none" stroke="#8D6E63" stroke-width="12" stroke-linecap="round"/>
+      <ellipse cx="44" cy="62" rx="18" ry="26" fill="#D7CCC8" stroke="#8D6E63" stroke-width="4"/>
+      <ellipse cx="68" cy="38" rx="16" ry="14" fill="#D7CCC8" stroke="#8D6E63" stroke-width="4"/>
+      <ellipse cx="82" cy="44" rx="10" ry="7" fill="#BCAAA4" stroke="#8D6E63" stroke-width="3"/>
+      <ellipse cx="60" cy="20" rx="6" ry="13" fill="#D7CCC8" stroke="#8D6E63" stroke-width="3"/>
+      <ellipse cx="60" cy="20" rx="3.5" ry="9" fill="#FFCDD2"/>
+      <ellipse cx="74" cy="18" rx="6" ry="13" fill="#D7CCC8" stroke="#8D6E63" stroke-width="3"/>
+      <ellipse cx="74" cy="18" rx="3.5" ry="9" fill="#FFCDD2"/>
+      <circle cx="70" cy="32" r="4" fill="white"/>
+      <circle cx="71" cy="33" r="2.5" fill="#1a1a1a"/>
+      <ellipse cx="54" cy="62" rx="7" ry="11" fill="#D7CCC8" stroke="#8D6E63" stroke-width="2.5" transform="rotate(30 54 62)"/>
+    </g>
+  `,
+
+  giraffe: `
+    <defs><filter id="f-gir" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-gir)">
+      <ellipse cx="60" cy="84" rx="36" ry="18" fill="#FFD54F" stroke="#795548" stroke-width="4"/>
+      <polygon points="58,68 74,68 82,8 66,8" fill="#FFD54F" stroke="#795548" stroke-width="3"/>
+      <ellipse cx="76" cy="10" rx="14" ry="10" fill="#FFD54F" stroke="#795548" stroke-width="3"/>
+      <rect x="68" y="2" width="4" height="10" rx="2" fill="#795548"/>
+      <rect x="78" y="2" width="4" height="10" rx="2" fill="#795548"/>
+      <circle cx="84" cy="8" r="4" fill="white"/>
+      <circle cx="85" cy="9" r="2.5" fill="#1a1a1a"/>
+      <ellipse cx="66" cy="14" rx="5" ry="8" fill="#FFCCBC" stroke="#795548" stroke-width="2.5" transform="rotate(-20 66 14)"/>
+      <ellipse cx="88" cy="14" rx="8" ry="6" fill="#FFCC80" stroke="#795548" stroke-width="2"/>
+      <ellipse cx="68" cy="54" rx="5" ry="7" fill="#795548" opacity="0.6" transform="rotate(-15 68 54)"/>
+      <ellipse cx="72" cy="36" rx="4" ry="6" fill="#795548" opacity="0.6" transform="rotate(10 72 36)"/>
+      <ellipse cx="70" cy="20" rx="4" ry="5" fill="#795548" opacity="0.6"/>
+      <ellipse cx="44" cy="80" rx="9" ry="6" fill="#795548" opacity="0.5" transform="rotate(15 44 80)"/>
+      <ellipse cx="68" cy="78" rx="7" ry="5" fill="#795548" opacity="0.5"/>
+      <rect x="32" y="96" width="9" height="22" rx="4" fill="#FFD54F" stroke="#795548" stroke-width="3"/>
+      <rect x="46" y="98" width="9" height="20" rx="4" fill="#FFD54F" stroke="#795548" stroke-width="3"/>
+      <rect x="70" y="98" width="9" height="20" rx="4" fill="#FFD54F" stroke="#795548" stroke-width="3"/>
+      <rect x="84" y="96" width="9" height="22" rx="4" fill="#FFD54F" stroke="#795548" stroke-width="3"/>
+      <path d="M24,82 Q14,76 12,88" fill="none" stroke="#795548" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="12" cy="90" r="5" fill="#795548"/>
+    </g>
+  `,
+
+  goat: `
+    <defs><filter id="f-goa" x="-25%" y="-25%" width="150%" height="150%">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
+      <feFlood flood-color="white" result="w"/>
+      <feComposite in="w" in2="e" operator="in" result="o"/>
+      <feMerge><feMergeNode in="o"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter></defs>
+    <g filter="url(#f-goa)">
+      <ellipse cx="54" cy="76" rx="36" ry="22" fill="#EFEBE9" stroke="#795548" stroke-width="4"/>
+      <circle cx="86" cy="52" r="18" fill="#EFEBE9" stroke="#795548" stroke-width="4"/>
+      <ellipse cx="100" cy="60" rx="10" ry="8" fill="#FFCCBC" stroke="#795548" stroke-width="3"/>
+      <circle cx="96" cy="61" r="2" fill="#5D4037"/>
+      <circle cx="104" cy="61" r="2" fill="#5D4037"/>
+      <path d="M82,36 Q72,20 76,30" fill="none" stroke="#795548" stroke-width="5" stroke-linecap="round"/>
+      <path d="M90,34 Q98,18 94,28" fill="none" stroke="#795548" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="74" cy="50" rx="9" ry="6" fill="#FFCCBC" stroke="#795548" stroke-width="2.5" transform="rotate(-30 74 50)"/>
+      <circle cx="84" cy="46" r="5" fill="white"/>
+      <circle cx="85" cy="47" r="3" fill="#1a1a1a"/>
+      <circle cx="86" cy="46" r="1.2" fill="white"/>
+      <path d="M98,66 Q96,76 98,84" fill="none" stroke="#795548" stroke-width="5" stroke-linecap="round"/>
+      <rect x="70" y="92" width="10" height="26" rx="5" fill="#EFEBE9" stroke="#795548" stroke-width="3"/>
+      <rect x="54" y="94" width="10" height="24" rx="5" fill="#EFEBE9" stroke="#795548" stroke-width="3"/>
+      <rect x="32" y="94" width="10" height="24" rx="5" fill="#EFEBE9" stroke="#795548" stroke-width="3"/>
+      <rect x="16" y="92" width="10" height="26" rx="5" fill="#EFEBE9" stroke="#795548" stroke-width="3"/>
+      <path d="M18,68 Q8,58 12,50" fill="none" stroke="#795548" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  `,
+
+  // ── OLD ANIMALS (kept for compatibility) ─────────────────────────────────
   cat: `
     <defs><filter id="f-cat" x="-25%" y="-25%" width="150%" height="150%">
       <feMorphology in="SourceAlpha" operator="dilate" radius="5" result="e"/>
