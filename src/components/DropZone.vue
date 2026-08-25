@@ -24,14 +24,14 @@ defineExpose({ el })
     <!-- Silhouette -->
     <Transition name="fade-out">
       <div v-if="!isSolved" class="item-layer animate-zone-shimmer">
-        <ItemShape :item-id="targetId" mode="silhouette" :size="190" />
+        <ItemShape :item-id="targetId" mode="silhouette" :size="150" />
       </div>
     </Transition>
 
     <!-- Colorful reveal -->
     <Transition name="pop-reveal">
       <div v-if="isSolved" class="item-layer animate-pop-in">
-        <ItemShape :item-id="targetId" mode="colorful" :size="190" />
+        <ItemShape :item-id="targetId" mode="colorful" :size="150" />
       </div>
     </Transition>
   </div>
@@ -40,12 +40,12 @@ defineExpose({ el })
 <style scoped>
 .stage-frame {
   position: relative;
-  width: min(88vw, 340px);
-  height: min(88vw, 340px);
-  border-radius: 28px;
+  width: min(74vw, 240px);
+  height: min(74vw, 240px);
+  border-radius: 22px;
   background: #ffffff;
-  border: 4px solid rgba(0,0,0,0.12);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08);
+  border: 3px solid rgba(0,0,0,0.14);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.07);
   display: flex;
   align-items: center;
   justify-content: center;

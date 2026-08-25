@@ -96,8 +96,8 @@ function onPointerUp(e: PointerEvent) {
 
 <style scoped>
 .item-card {
-  width: min(calc(50vw - 23px), 170px);
-  height: min(calc(50vw - 23px), 170px);
+  width: min(calc(50vw - 20px), 150px);
+  height: min(calc(50vw - 20px), 150px);
   border-radius: 22px;
   border: 4px solid white;
   background-color: var(--card-bg);

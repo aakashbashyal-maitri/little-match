@@ -128,9 +128,10 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 14px 16px 20px;
+  justify-content: flex-start;
+  padding: 12px 12px 14px;
   box-sizing: border-box;
+  gap: 10px;
 }
 
 .header {
@@ -168,7 +169,7 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 .choices-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  gap: 8px;
   width: 100%;
   max-width: 440px;
 }
