@@ -89,8 +89,6 @@ function onPointerUp(e: PointerEvent) {
   >
     <ItemShape :item-id="itemId" :size="90" mode="colorful" />
 
-    <!-- Bottom indicator dot -->
-    <div class="dot" />
   </div>
 </template>
 
