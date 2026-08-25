@@ -2,6 +2,7 @@ export type ItemId =
   | 'circle' | 'square' | 'triangle' | 'star' | 'heart'
   | 'apple'  | 'carrot'  | 'banana'  | 'cake'  | 'cookie'
   | 'cat'    | 'dog'     | 'bird'    | 'fish'  | 'rabbit'
+  | 'cow'    | 'elephant' | 'monkey' | 'chicken' | 'buffalo'
 
 export interface Puzzle {
   targetId: ItemId
