@@ -74,25 +74,6 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
 <template>
   <div class="game-screen">
 
-    <!-- Header -->
-    <div class="header">
-      <div class="level-pill" :style="{ color: level.accent, borderColor: level.accent }">
-        <span>{{ level.emoji }}</span>
-        <span>{{ level.name }}</span>
-      </div>
-      <div class="progress-dots">
-        <div
-          v-for="i in totalPuzzles" :key="i"
-          class="dot"
-          :class="{
-            done:    i - 1 < puzzleIndex,
-            current: i - 1 === puzzleIndex,
-            todo:    i - 1 > puzzleIndex,
-          }"
-        />
-      </div>
-    </div>
-
     <!-- 3x3 grid: stage in center, 4 cards in corners -->
     <div class="play-area">
 
@@ -163,6 +144,25 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
     </div>
 
     <StarBurst :active="burstActive" :x="burstX" :y="burstY" />
+
+    <!-- Bottom bar: level name left, progress dots right -->
+    <div class="bottom-bar">
+      <div class="level-pill" :style="{ color: level.accent, borderColor: level.accent }">
+        <span>{{ level.emoji }}</span>
+        <span>{{ level.name }}</span>
+      </div>
+      <div class="progress-dots">
+        <div
+          v-for="i in totalPuzzles" :key="i"
+          class="dot"
+          :class="{
+            done:    i - 1 < puzzleIndex,
+            current: i - 1 === puzzleIndex,
+            todo:    i - 1 > puzzleIndex,
+          }"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -178,12 +178,13 @@ function onDragEnd(itemId: ItemId, cx: number, cy: number) {
   gap: 14px;
 }
 
-.header {
+.bottom-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   max-width: 440px;
+  padding: 0 4px;
 }
 
 .level-pill {
