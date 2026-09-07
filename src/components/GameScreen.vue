@@ -1,271 +1,59 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import type { Level, Puzzle, ItemId } from '../types/game'
-import DropZone      from './DropZone.vue'
-import DraggableItem from './DraggableItem.vue'
-import StarBurst     from './StarBurst.vue'
-import { useSound }  from '../composables/useSound'
-
-const props = defineProps<{
-  level:        Level
-  puzzle:       Puzzle
-  puzzleIndex:  number
-  totalPuzzles: number
-}>()
-
-const emit = defineEmits<{ (e: 'solved'): void }>()
+import ItemShape from './ItemShape.vue'
+import { useSound } from '../composables/useSound'
+const props = defineProps<{level:Level; puzzle:Puzzle; puzzleIndex:number; totalPuzzles:number; solved:boolean; muted:boolean}>()
+const emit = defineEmits<{solved:[]; next:[]}>()
 const sound = useSound()
-
-const dropZoneRef     = ref<InstanceType<typeof DropZone> | null>(null)
-const isSolved        = ref(false)
-const isHovering      = ref(false)
-const burstActive     = ref(false)
-const burstX          = ref(0)
-const burstY          = ref(0)
-const wobbleId        = ref<ItemId | null>(null)
-const draggingId      = ref<ItemId | null>(null)
-const shuffledChoices = ref<ItemId[]>([])
-
-watch(() => props.puzzle, () => {
-  shuffledChoices.value = [...props.puzzle.choiceIds].sort(() => Math.random() - 0.5)
-  isSolved.value    = false
-  isHovering.value  = false
-  burstActive.value = false
-  wobbleId.value    = null
-  draggingId.value  = null
-}, { immediate: true })
-
-function getZoneRect() {
-  return dropZoneRef.value?.el?.getBoundingClientRect() ?? null
+const label = (id: ItemId) => id === 'wateringcan' ? 'watering can' : id === 'icecream' ? 'ice cream' : id
+const choices = [...props.puzzle.choiceIds]
+for (let i=choices.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [choices[i],choices[j]]=[choices[j]!,choices[i]!] }
+const wrong = ref<ItemId | null>(null), hint = ref(false), hovering = ref(false)
+const zone = ref<HTMLElement | null>(null)
+const dragging = ref<ItemId | null>(null), dx = ref(0), dy = ref(0)
+let startX=0, startY=0, moved=false, suppressClick=false
+function choose(id:ItemId) {
+  if (props.solved) return
+  if (id === props.puzzle.targetId) { wrong.value=null; emit('solved'); if (!props.muted) sound.playSuccess() }
+  else { wrong.value=id; if (!props.muted) sound.playWrong() }
 }
-function isOverZone(cx: number, cy: number) {
-  const r = getZoneRect()
-  return r ? cx >= r.left && cx <= r.right && cy >= r.top && cy <= r.bottom : false
+function down(e:PointerEvent,id:ItemId) {
+  if (props.solved || e.button !== 0) return
+  dragging.value=id; startX=e.clientX; startY=e.clientY; moved=false
+  ;(e.currentTarget as HTMLElement).setPointerCapture(e.pointerId)
 }
-
-function onDragStart() { sound.playPickup() }
-
-function onDragMove(itemId: ItemId, cx: number, cy: number) {
-  draggingId.value = itemId
-  isHovering.value = isOverZone(cx, cy)
+function over(e:PointerEvent) { const r=zone.value?.getBoundingClientRect(); return !!r && e.clientX>=r.left && e.clientX<=r.right && e.clientY>=r.top && e.clientY<=r.bottom }
+function move(e:PointerEvent) {
+  if (!dragging.value) return
+  dx.value=e.clientX-startX; dy.value=e.clientY-startY
+  moved ||= Math.hypot(dx.value,dy.value)>8; hovering.value=over(e)
 }
-
-function onDragEnd(itemId: ItemId, cx: number, cy: number) {
-  draggingId.value = null
-  isHovering.value = false
-  if (!isOverZone(cx, cy)) return
-
-  if (itemId === props.puzzle.targetId) {
-    isSolved.value = true
-    const r = getZoneRect()!
-    burstX.value = r.left + r.width  / 2
-    burstY.value = r.top  + r.height / 2
-    burstActive.value = true
-    sound.playSuccess()
-    setTimeout(() => { burstActive.value = false; emit('solved') }, 1600)
-  } else {
-    wobbleId.value = itemId
-    sound.playWrong()
-    setTimeout(() => { wobbleId.value = null }, 500)
-  }
+function cancel() { dragging.value=null; dx.value=0; dy.value=0; hovering.value=false }
+function up(e:PointerEvent,id:ItemId) {
+  if (!dragging.value) return
+  suppressClick=moved
+  if (moved && over(e)) choose(id)
+  cancel()
 }
+function click(e:MouseEvent,id:ItemId) { if (e.detail===0 || !suppressClick) choose(id); suppressClick=false }
 </script>
-
 <template>
-  <div class="game-screen">
-
-    <!-- 3x3 grid: stage in center, 4 cards in corners -->
-    <div class="play-area">
-
-      <DraggableItem
-        v-if="shuffledChoices[0]"
-        :key="`tl-${puzzle.targetId}-${shuffledChoices[0]}`"
-        class="pos-tl"
-        :item-id="shuffledChoices[0]"
-        :card-index="0"
-        :disabled="isSolved"
-        :wobble="wobbleId === shuffledChoices[0]"
-        :dimmed="draggingId !== null && draggingId !== shuffledChoices[0]"
-        @drag-start="onDragStart"
-        @drag-move="(cx,cy) => onDragMove(shuffledChoices[0], cx, cy)"
-        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[0], cx, cy)"
-      />
-
-      <DraggableItem
-        v-if="shuffledChoices[1]"
-        :key="`tr-${puzzle.targetId}-${shuffledChoices[1]}`"
-        class="pos-tr"
-        :item-id="shuffledChoices[1]"
-        :card-index="1"
-        :disabled="isSolved"
-        :wobble="wobbleId === shuffledChoices[1]"
-        :dimmed="draggingId !== null && draggingId !== shuffledChoices[1]"
-        @drag-start="onDragStart"
-        @drag-move="(cx,cy) => onDragMove(shuffledChoices[1], cx, cy)"
-        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[1], cx, cy)"
-      />
-
-      <DropZone
-        ref="dropZoneRef"
-        class="pos-center"
-        :target-id="puzzle.targetId"
-        :zone-bg="level.zoneBg"
-        :is-hovering="isHovering"
-        :is-solved="isSolved"
-      />
-
-      <DraggableItem
-        v-if="shuffledChoices[2]"
-        :key="`bl-${puzzle.targetId}-${shuffledChoices[2]}`"
-        class="pos-bl"
-        :item-id="shuffledChoices[2]"
-        :card-index="2"
-        :disabled="isSolved"
-        :wobble="wobbleId === shuffledChoices[2]"
-        :dimmed="draggingId !== null && draggingId !== shuffledChoices[2]"
-        @drag-start="onDragStart"
-        @drag-move="(cx,cy) => onDragMove(shuffledChoices[2], cx, cy)"
-        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[2], cx, cy)"
-      />
-
-      <DraggableItem
-        v-if="shuffledChoices[3]"
-        :key="`br-${puzzle.targetId}-${shuffledChoices[3]}`"
-        class="pos-br"
-        :item-id="shuffledChoices[3]"
-        :card-index="3"
-        :disabled="isSolved"
-        :wobble="wobbleId === shuffledChoices[3]"
-        :dimmed="draggingId !== null && draggingId !== shuffledChoices[3]"
-        @drag-start="onDragStart"
-        @drag-move="(cx,cy) => onDragMove(shuffledChoices[3], cx, cy)"
-        @drag-end="(cx,cy) => onDragEnd(shuffledChoices[3], cx, cy)"
-      />
+  <section class="game">
+    <div class="game-topline"><span class="world-pill">{{ level.emoji }} World {{ level.id }} · {{ level.name }}</span><span>Match {{ puzzleIndex + 1 }} of {{ totalPuzzles }}</span></div>
+    <div class="progress" role="progressbar" :aria-valuenow="puzzleIndex + (solved ? 1 : 0)" :aria-valuemax="totalPuzzles" aria-valuemin="0" aria-label="Matches completed"><span v-for="n in totalPuzzles" :key="n" :class="{filled:n <= puzzleIndex + (solved ? 1 : 0)}"></span></div>
+    <h1>{{ solved ? 'You found its friend!' : 'Who’s hiding in the shadow?' }}</h1>
+    <p class="instruction">{{ solved ? 'Wonderful matching. Ready for the next one?' : 'Tap the matching picture, or drag it to the shadow.' }}</p>
+    <div ref="zone" class="shadow-stage" :class="{matched:solved, hovering}">
+      <span class="stage-spark spark-one" aria-hidden="true">✧</span><span class="stage-spark spark-two" aria-hidden="true">✧</span>
+      <div class="shadow-disc"><ItemShape :item-id="puzzle.targetId" :mode="solved || hint ? 'colorful' : 'silhouette'" :size="180" /></div>
+      <span class="stage-label">{{ solved ? '✓ A perfect match' : hint ? 'Find this picture below' : 'Find my match' }}</span>
     </div>
-
-    <StarBurst :active="burstActive" :x="burstX" :y="burstY" />
-
-    <!-- Bottom info bar -->
-    <div class="bottom-bar">
-      <div class="bar-row">
-        <span class="level-label" :style="{ color: level.accent }">{{ level.emoji }} {{ level.name }}</span>
-        <span class="puzzle-count" :style="{ color: level.accent }">{{ puzzleIndex + 1 }} / {{ totalPuzzles }}</span>
-      </div>
-      <div class="progress-track">
-        <div
-          class="progress-fill"
-          :style="{
-            width: `${((puzzleIndex + 1) / totalPuzzles) * 100}%`,
-            background: level.accent,
-          }"
-        />
-      </div>
+    <div class="choices" :class="{'three-choices':choices.length===3}">
+      <button v-for="(id,i) in choices" :key="id" class="choice" :class="[{correct:solved && id===puzzle.targetId, retry:wrong===id, dragging:dragging===id}, ['lavender','peach','blue','mint'][i]]" :disabled="solved" :aria-label="`Match ${label(id)}`" :style="dragging===id ? {transform:`translate(${dx}px,${dy}px)`, zIndex:5} : {}" @pointerdown="down($event,id)" @pointermove="move" @pointerup="up($event,id)" @pointercancel="cancel" @lostpointercapture="cancel" @click="click($event,id)"><ItemShape :item-id="id" :size="115" /><span>{{ label(id) }}</span><b v-if="solved && id===puzzle.targetId" class="check">✓</b></button>
     </div>
-  </div>
+    <div class="feedback" aria-live="polite"><template v-if="solved">✦ Great job! It’s {{ label(puzzle.targetId) }}.</template><template v-else-if="wrong">Keep looking. You can try another picture!</template><template v-else>Take your time. You’ve got this.</template></div>
+    <button v-if="solved" class="primary next-button" @click="emit('next')">{{ puzzleIndex + 1 === totalPuzzles ? 'Finish world' : 'Next match' }} →</button>
+    <button v-else class="quiet-button hint-button" :aria-pressed="hint" @click="hint = !hint">{{ hint ? 'Show shadow again' : '✧ Give me a hint' }}</button>
+  </section>
 </template>
-
-<style scoped>
-.game-screen {
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 12px;
-  box-sizing: border-box;
-  gap: 14px;
-}
-
-.bottom-bar {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-  max-width: 440px;
-  background: rgba(255,255,255,0.82);
-  border-radius: 16px;
-  padding: 10px 14px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-  box-sizing: border-box;
-}
-
-.bar-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.level-label {
-  font-family: "Nunito", sans-serif;
-  font-size: 1rem;
-  font-weight: 900;
-  letter-spacing: 0.01em;
-}
-
-.puzzle-count {
-  font-family: "Nunito", sans-serif;
-  font-size: 1rem;
-  font-weight: 800;
-  opacity: 0.85;
-}
-
-.progress-track {
-  width: 100%;
-  height: 10px;
-  background: rgba(0,0,0,0.08);
-  border-radius: 9999px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  border-radius: 9999px;
-  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-/* ── 3x3 grid ─────────────────────────────────────────────── */
-.play-area {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr;
-  grid-template-rows: 1fr 1.5fr 1fr;
-  gap: 8px;
-  width: 100%;
-  max-width: 440px;
-  aspect-ratio: 1;
-}
-
-.pos-tl     { grid-row: 1; grid-column: 1; }
-.pos-tr     { grid-row: 1; grid-column: 3; }
-.pos-center { grid-row: 2; grid-column: 2; }
-.pos-bl     { grid-row: 3; grid-column: 1; }
-.pos-br     { grid-row: 3; grid-column: 3; }
-
-/* Cards fill their grid cell */
-.play-area :deep(.item-card) {
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 18px;
-}
-
-/* Stage fills its grid cell */
-.play-area :deep(.stage-frame) {
-  width: 100% !important;
-  height: 100% !important;
-  border-radius: 18px;
-}
-
-/* SVGs inside corner cards */
-.pos-tl :deep(svg),
-.pos-tr :deep(svg),
-.pos-bl :deep(svg),
-.pos-br :deep(svg) {
-  width: 65% !important;
-  height: 65% !important;
-}
-
-/* SVG inside center stage */
-.pos-center :deep(svg) {
-  width: 62% !important;
-  height: 62% !important;
-}
-</style>

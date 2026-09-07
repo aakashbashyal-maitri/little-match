@@ -1,6 +1,7 @@
-﻿import type { ItemId } from '../types/game'
+import { refreshedArt } from './refreshedArt'
+import type { ItemId } from '../types/game'
 
-export const svgContent: Record<ItemId, string> = {
+const originalArt = {
 
   // ── SHAPES ───────────────────────────────────────────────────────────────
   circle: `
@@ -1170,3 +1171,5 @@ export const svgContent: Record<ItemId, string> = {
     </g>
   `,
 }
+
+export const svgContent = { ...originalArt, ...refreshedArt } as Record<ItemId, string>

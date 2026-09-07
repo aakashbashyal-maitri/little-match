@@ -2,12 +2,13 @@ let ctx: AudioContext | null = null
 
 function getCtx() {
   if (!ctx) ctx = new AudioContext()
-  if (ctx.state === 'suspended') ctx.resume()
+  if (ctx.state === 'suspended') void ctx.resume().catch(() => {})
   return ctx
 }
 
 function tone(freq: number, dur: number, delay = 0, vol = 0.25, type: OscillatorType = 'sine') {
-  const c = getCtx()
+  let c: AudioContext
+  try { c = getCtx() } catch { return }
   const osc = c.createOscillator()
   const gain = c.createGain()
   osc.connect(gain); gain.connect(c.destination)

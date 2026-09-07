@@ -1,4 +1,5 @@
 export type ItemId =
+  | 'rocket' | 'butterfly' | 'turtle' | 'snail' | 'mushroom' | 'wateringcan' | 'dinosaur' | 'icecream'
   | 'circle' | 'square' | 'triangle' | 'star' | 'heart'
   | 'apple'  | 'carrot'  | 'banana'  | 'cake'  | 'cookie'
   | 'cat'    | 'dog'     | 'bird'    | 'fish'  | 'rabbit'
@@ -25,5 +26,3 @@ export interface Level {
 }
 
 export type GamePhase = 'welcome' | 'playing' | 'levelComplete' | 'allDone'
-
-
