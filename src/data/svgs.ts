@@ -1,4 +1,5 @@
 import { refreshedArt } from './refreshedArt'
+import { everydayArt } from './everydayArt'
 import type { ItemId } from '../types/game'
 
 const originalArt = {
@@ -1172,4 +1173,4 @@ const originalArt = {
   `,
 }
 
-export const svgContent = { ...originalArt, ...refreshedArt } as Record<ItemId, string>
+export const svgContent = { ...originalArt, ...refreshedArt, ...everydayArt } satisfies Record<ItemId, string>

@@ -1,7 +1,7 @@
 import type { ItemId } from '../types/game'
 // Large, clean contours; all details stay within the object's silhouette.
 const draw = (body:string) => `<g stroke="#344b46" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">${body}</g>`
-export const refreshedArt: Partial<Record<ItemId,string>> = {
+export const refreshedArt = {
  elephant: draw(`<path d="M23 67 Q9 46 26 35 Q41 24 68 34 Q85 18 99 34 Q109 43 103 66 L103 84 Q103 101 89 101 L81 96 L87 87 Q94 91 94 78 L88 67 L79 75 L77 103 H62 L60 81 H44 L42 103 H27 Z" fill="#98b7b4"/><path d="M69 38 Q45 28 48 55 Q51 79 71 65 Q82 51 69 38" fill="#bfd3ce"/><circle cx="91" cy="44" r="3" fill="#344b46"/><path d="M24 49 Q13 47 13 65" fill="none"/>`),
  giraffe: draw(`<path d="M32 103 L33 64 L63 64 L68 25 L61 15 L66 10 L75 20 L89 18 L101 28 L100 42 L84 45 L81 80 L75 103 H64 L66 81 H48 L44 103 Z" fill="#edc875"/><path d="M76 20 L76 9 M87 18 L88 8" fill="none"/><path d="M36 70 L44 70 L44 78 L36 78 M67 50 L76 50 L75 59 L66 59 M70 30 L78 31 L78 38 L69 39" fill="#b28045" stroke="none"/><circle cx="91" cy="28" r="2.5" fill="#344b46"/><path d="M33 66 Q21 57 21 75" fill="none"/>`),
  airplane: draw(`<path d="M53 20 Q60 3 67 20 L70 45 L107 70 L107 80 L69 66 L68 91 L82 102 L82 109 L60 102 L38 109 L38 102 L52 91 L51 66 L13 80 L13 70 L50 45 Z" fill="#85b9d4"/><path d="M55 29 Q60 22 65 29 L66 40 H54 Z" fill="#e8f5f6"/><path d="M60 52 V86" stroke="#558dab"/>`),
@@ -16,6 +16,4 @@ export const refreshedArt: Partial<Record<ItemId,string>> = {
  wateringcan: draw(`<path d="M77 43 Q114 23 110 60 Q107 80 80 70" fill="none" stroke="#729e97" stroke-width="10"/><path d="M31 69 L12 43 L7 48 L24 88 H38" fill="#9cc5b7"/><path d="M31 43 H83 L87 101 H27 Z" fill="#9cc5b7"/><path d="M44 43 V32 H68 V43" fill="none" stroke-width="6"/><path d="M10 38 L20 48 L8 59 L1 49 Z" fill="#e7c674"/><path d="M41 57 V86" stroke="#cfe4d5" stroke-width="7"/>`),
  dinosaur: draw(`<path d="M12 70 Q30 84 42 66 L55 43 L54 25 Q58 10 76 16 L98 24 L98 40 L76 44 L74 60 L91 62 L91 72 L 70 70 L68 88 L78 102 H59 L50 85 L 40 102 H23 L35 78 Q19 86 12 70 Z" fill="#94b58b"/><path d="M50 49 L40 40 L39 58 L29 53 L31 70" fill="#d6bd71"/><circle cx=" 80" cy="27" r="3" fill="#344b46"/>`),
  icecream: draw(`<path d="M36 59 L60 111 L84 59" fill="#d9b17a"/><path d="M45 70 L70 89 M53 92 L77 70" stroke="#b68a59"/><path d="M27 60 Q13 46 29 36 Q27 14 49 19 Q61 3 76 20 Q98 16 94 37 Q110 52 94 63 Q82 70 70 61 Q58 76 48 61 Q36 72 27 60 Z" fill="#e2a6b1"/>`),
-}
-
-
+} satisfies Partial<Record<ItemId,string>>

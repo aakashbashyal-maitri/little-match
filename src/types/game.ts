@@ -1,4 +1,5 @@
-export type ItemId =
+import type { EverydayItemId } from '../data/everydayArt'
+export type ItemId = EverydayItemId
   | 'rocket' | 'butterfly' | 'turtle' | 'snail' | 'mushroom' | 'wateringcan' | 'dinosaur' | 'icecream'
   | 'circle' | 'square' | 'triangle' | 'star' | 'heart'
   | 'apple'  | 'carrot'  | 'banana'  | 'cake'  | 'cookie'

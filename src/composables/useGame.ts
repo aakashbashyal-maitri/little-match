@@ -15,6 +15,11 @@ export function useGame() {
         levelIndex.value = s.level; puzzleIndex.value = s.puzzle
         solved.value = s.solved === true; muted.value = s.muted === true
         resumePhase = s.phase; hasSave.value = true
+        // A completed save from an older, shorter game continues at the first new level.
+        if (s.phase === 'allDone' && s.level < levels.length - 1) {
+          levelIndex.value = s.level + 1; puzzleIndex.value = 0
+          solved.value = false; resumePhase = 'playing'
+        }
       }
     }
   } catch { storageAvailable.value = false }
