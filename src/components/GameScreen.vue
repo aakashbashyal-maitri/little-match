@@ -54,51 +54,29 @@ function up(e:PointerEvent,id:ItemId) {
 function click(e:MouseEvent,id:ItemId) { if (e.detail===0 || !suppressClick) choose(id); suppressClick=false }
 </script>
 <template>
-  <section class="game" :class="{'game-solved':solved}">
+  <section class="game max-[600px]:pt-3!" :class="{'[@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:pb-[calc(100px+env(safe-area-inset-bottom,0px))]!':solved}">
     <div class="game-topline"><span class="world-pill">{{ level.emoji }} World {{ level.id }} · {{ level.name }}</span><span>Match {{ puzzleIndex + 1 }} of {{ totalPuzzles }}</span></div>
-    <div class="progress" role="progressbar" :aria-valuenow="puzzleIndex + (solved ? 1 : 0)" :aria-valuemax="totalPuzzles" aria-valuemin="0" aria-label="Matches completed"><span v-for="n in totalPuzzles" :key="n" :class="{filled:n <= puzzleIndex + (solved ? 1 : 0)}"></span></div>
-    <h1>{{ solved ? 'You found its friend!' : 'Who’s hiding in the shadow?' }}</h1>
-    <p class="instruction">{{ solved ? 'Wonderful matching. Ready for the next one?' : 'Tap the matching picture, or drag it to the shadow.' }}</p>
-    <div ref="zone" class="shadow-stage" :class="{matched:solved, hovering, celebrating}">
+    <div class="progress max-[600px]:my-3!" role="progressbar" :aria-valuenow="puzzleIndex + (solved ? 1 : 0)" :aria-valuemax="totalPuzzles" aria-valuemin="0" aria-label="Matches completed"><span v-for="n in totalPuzzles" :key="n" :class="{filled:n <= puzzleIndex + (solved ? 1 : 0)}"></span></div>
+    <h1 class="max-[600px]:text-2xl!">{{ solved ? 'You found its friend!' : 'Who’s hiding in the shadow?' }}</h1>
+    <p class="instruction max-[600px]:mt-1.5!">{{ solved ? 'Wonderful matching. Ready for the next one?' : 'Tap the matching picture, or drag it to the shadow.' }}</p>
+    <div ref="zone" class="shadow-stage max-[600px]:my-3! max-[600px]:h-[clamp(130px,22dvh,165px)]!" :class="{matched:solved, hovering, celebrating}">
       <div v-if="celebrating" class="celebration-confetti" aria-hidden="true"><span v-for="(piece,i) in confetti" :key="i" :style="{'--x':piece.x, '--y':piece.y, '--piece-color':piece.color, animationDelay:piece.delay}">{{ i % 3 === 0 ? '★' : '●' }}</span></div>
       <span class="stage-spark spark-one" aria-hidden="true">✧</span><span class="stage-spark spark-two" aria-hidden="true">✧</span>
-      <div class="shadow-disc"><ItemShape :item-id="puzzle.targetId" :mode="solved || hint ? 'colorful' : 'silhouette'" :size="180" /></div>
+      <div class="shadow-disc max-[600px]:size-[clamp(100px,17dvh,130px)]! max-[600px]:[&_svg]:size-full!"><ItemShape :item-id="puzzle.targetId" :mode="solved || hint ? 'colorful' : 'silhouette'" :size="180" /></div>
       <span class="stage-label">{{ solved ? '✓ A perfect match' : hint ? 'Find this picture below' : 'Find my match' }}</span>
     </div>
-    <div class="choices" :class="{'three-choices':choices.length===3}">
-      <button v-for="(id,i) in choices" :key="id" class="choice" :class="[{correct:solved && id===puzzle.targetId, retry:wrong===id, dragging:dragging===id}, ['lavender','peach','blue','mint'][i]]" :disabled="solved" :aria-label="`Match ${label(id)}`" :style="dragging===id ? {transform:`translate(${dx}px,${dy}px)`, zIndex:5} : {}" @pointerdown="down($event,id)" @pointermove="move" @pointerup="up($event,id)" @pointercancel="cancel" @lostpointercapture="cancel" @click="click($event,id)"><span :key="`${id}-${wrong === id ? attempt : 0}`" class="choice-art" :class="{'try-again':wrong === id}"><ItemShape :item-id="id" :size="115" /></span><span>{{ label(id) }}</span><b v-if="solved && id===puzzle.targetId" class="check">✓</b></button>
+    <div class="choices max-[600px]:gap-2!" :class="{'three-choices':choices.length===3}">
+      <button v-for="(id,i) in choices" :key="id" class="choice disabled:touch-pan-y!" :class="[{correct:solved && id===puzzle.targetId, retry:wrong===id, dragging:dragging===id}, ['lavender','peach','blue','mint'][i]]" :disabled="solved" :aria-label="`Match ${label(id)}`" :style="dragging===id ? {transform:`translate(${dx}px,${dy}px)`, zIndex:5} : {}" @pointerdown="down($event,id)" @pointermove="move" @pointerup="up($event,id)" @pointercancel="cancel" @lostpointercapture="cancel" @click="click($event,id)"><span :key="`${id}-${wrong === id ? attempt : 0}`" class="choice-art max-[600px]:max-w-[clamp(60px,10dvh,80px)]!" :class="{'try-again':wrong === id}"><ItemShape :item-id="id" :size="115" /></span><span>{{ label(id) }}</span><b v-if="solved && id===puzzle.targetId" class="check">✓</b></button>
     </div>
-    <div class="feedback" :class="{'success-feedback':celebrating}" aria-live="polite"><template v-if="solved">✦ Great job! It’s {{ label(puzzle.targetId) }}.</template><template v-else-if="wrong">Keep looking. You can try another picture!</template><template v-else>Take your time. You’ve got this.</template></div>
-    <div v-if="solved" class="success-actions">
-      <button class="primary next-button" @click="emit('next')">{{ puzzleIndex + 1 === totalPuzzles ? 'Finish world' : 'Next match' }} →</button>
+    <div class="feedback max-[600px]:min-h-8! max-[600px]:pt-2!" :class="{'success-feedback':celebrating}" aria-live="polite"><template v-if="solved">✦ Great job! It’s {{ label(puzzle.targetId) }}.</template><template v-else-if="wrong">Keep looking. You can try another picture!</template><template v-else>Take your time. You’ve got this.</template></div>
+    <div v-if="solved" class="[@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:fixed [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:inset-x-0 [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:bottom-0 [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:z-10 [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:px-[18px] [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:pt-3 [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:pb-[calc(12px+env(safe-area-inset-bottom,0px))] [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:bg-[#faf9f4] [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:border-t [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:border-[#e5e8df] [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:shadow-[0_-4px_16px_#29483f12]">
+      <button class="primary next-button [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:w-full [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:max-w-[480px] [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:min-w-0! [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:min-h-14 [@media(max-width:600px),(max-height:600px)_and_(pointer:coarse)]:m-0!" @click="emit('next')">{{ puzzleIndex + 1 === totalPuzzles ? 'Finish world' : 'Next match' }} →</button>
     </div>
     <button v-else class="quiet-button hint-button" :aria-pressed="hint" @click="hint = !hint">{{ hint ? 'Show shadow again' : '✧ Give me a hint' }}</button>
   </section>
 </template>
 
 <style scoped>
-/* Finished cards no longer need to capture drag gestures. */
-.choice:disabled { touch-action: pan-y; }
-
-@media (max-width: 600px), (max-height: 600px) and (pointer: coarse) {
-  .game-solved { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
-  .success-actions {
-    position: fixed;
-    inset: auto 0 0;
-    z-index: 10;
-    padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px));
-    background: #faf9f4;
-    border-top: 1px solid #e5e8df;
-    box-shadow: 0 -4px 16px #29483f12;
-  }
-  .success-actions .next-button {
-    width: 100%;
-    max-width: 480px;
-    min-width: 0;
-    min-height: 56px;
-    margin: 0;
-  }
-}
 .choice-art { display: block; width: 100%; max-width: 115px; margin: 0 !important; }
 .choice-art.try-again { animation: gentle-wiggle 480ms ease-in-out; }
 .celebrating .shadow-disc { animation: happy-pop 650ms cubic-bezier(.22,.8,.35,1); }

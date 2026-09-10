@@ -8,7 +8,7 @@ function reset() { void restart(); resetDialog.value?.close() }
 </script>
 <template>
   <div class="app-shell">
-    <header class="site-header">
+    <header class="site-header max-[600px]:py-2!">
       <button class="brand" aria-label="Little Match home" @click="home"><span class="brand-mark">✦</span> little match<span class="brand-dot">.</span></button>
       <div class="header-actions"><span class="save-note">{{ g.storageAvailable.value ? 'Progress saved on this device' : 'Progress cannot be saved on this device' }}</span><button class="quiet-button" :aria-pressed="g.muted.value" @click="g.muted.value = !g.muted.value">{{ g.muted.value ? '♫ Sound off' : '♫ Sound on' }}</button></div>
     </header>
